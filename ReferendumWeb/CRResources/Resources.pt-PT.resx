@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Abstention" xml:space="preserve">
+    <value>Abstenção</value>
+  </data>
+  <data name="Agree" xml:space="preserve">
+    <value>Concordar</value>
+  </data>
+  <data name="BallotPaper" xml:space="preserve">
+    <value>Boletim de voto</value>
+  </data>
+  <data name="Blank" xml:space="preserve">
+    <value>Voto em branco</value>
+  </data>
+  <data name="Caution" xml:space="preserve">
+    <value>Atenção: </value>
+  </data>
+  <data name="Check" xml:space="preserve">
+    <value>Conferir</value>
+  </data>
+  <data name="CivilReferendum2014" xml:space="preserve">
+    <value>Referendo Civil 2014</value>
+  </data>
+  <data name="ConfirmYourChoices" xml:space="preserve">
+    <value>Confirme as suas escolhas:</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Continuar</value>
+  </data>
+  <data name="DateOfBirth" xml:space="preserve">
+    <value>Data de Nascimento</value>
+  </data>
+  <data name="Disagree" xml:space="preserve">
+    <value>Discordar</value>
+  </data>
+  <data name="IDCardNumber" xml:space="preserve">
+    <value>Número de Bilhete de Identidade</value>
+  </data>
+  <data name="InPersonVoting" xml:space="preserve">
+    <value>Voto em pessoa</value>
+  </data>
+  <data name="KeepYourIDCard" xml:space="preserve">
+    <value>Por favor verifique se tem o seu Bilhete de Identidade consigo antes de nos deixar.</value>
+  </data>
+  <data name="MotionOne" xml:space="preserve">
+    <value>Motion 1: </value>
+  </data>
+  <data name="MotionTwo" xml:space="preserve">
+    <value>Motion 2: </value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>Não</value>
+  </data>
+  <data name="OverridingMessage" xml:space="preserve">
+    <value>O seu número de Bilhete de Identidade já foi utilizado para votar pela internet. Poderá votar pessoalmente para cancelar o seu voto anterior.</value>
+  </data>
+  <data name="PrivacyStatement_P1" xml:space="preserve">
+    <value>Nos termos segundo as disposições da Lei de Protecção de Dados Pessoais, informamos- lhe o seguinte:</value>
+  </data>
+  <data name="PrivacyStatement_P2" xml:space="preserve">
+    <value>A Sociedade Aberta de Macau é a identidade responsável pelo processo dos seus dados pessoais. Você, como cidadão de Macau tomando parte no Referendo Civil que nã tem efeito legislativo sobre a sua própria vontade, irá voluntáriamente, fornecer-nos o seu número de Bilhete de Identidade, telefone e data de nascimento. Os seus dados serão temporariamente registados no sistema de computador sob gestão da Sociedade Aberta de Macau durante o período de voto e serão permanentemente apagados do sistema logo que os resultados do Referendo Civil serem finalizados. A recolha de dados é somente restrita para fins de verificação da singularidade dos eleitores do Referendo Civil 2014. A informação mais sensível como o seu número do Bilhete de Identidade, será convertida numa sequência de caracteres irreversível usando o algoritmo SHA-512.</value>
+  </data>
+  <data name="PrivacyStatement_P3" xml:space="preserve">
+    <value>Se concorda em nos fornecer os seus dados pessoais de modo a que possa participar no Referendo Civil para expressar a sua opinião sobre a Eleição do Chefe Executivo, por favor, carregue no botão em baixo.</value>
+  </data>
+  <data name="PrivacyStatement_Title" xml:space="preserve">
+    <value>Declaração de Privacidade</value>
+  </data>
+  <data name="ProceedToBallotPaper" xml:space="preserve">
+    <value>Avançar para o Boletim de voto</value>
+  </data>
+  <data name="QuestionOne" xml:space="preserve">
+    <value>Moção 1: Deverá o Chefe do Executivo ser eleito por sufrágio universal em 2019?</value>
+  </data>
+  <data name="QuestionTwo" xml:space="preserve">
+    <value>Moção 2: Tem confiança neste único candidato para a Eleição do Chefe do Executivo de 2014 Chui Sai On Fernando para ser Chefe do Executivo ?</value>
+  </data>
+  <data name="ReturnTabletComputer" xml:space="preserve">
+    <value>Por favor devolva este computador ao nosso voluntário para que este lhe devolva o seu Bilhete de Identidade.</value>
+  </data>
+  <data name="StepOne" xml:space="preserve">
+    <value>Primeiro passo: Verificação de Eleitor</value>
+  </data>
+  <data name="StepTwo" xml:space="preserve">
+    <value>Segundo Passo: Verificação por mensagem SMS</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>Submeter</value>
+  </data>
+  <data name="Support" xml:space="preserve">
+    <value>Suporte para utilização</value>
+  </data>
+  <data name="ThanksForVoting" xml:space="preserve">
+    <value>Muito Obrigada pela sua participação no Referendo Civil 2014 sobre a Eleição do Chefe Executivo.
+Obrigada.</value>
+  </data>
+  <data name="ThankYou" xml:space="preserve">
+    <value>Obrigado</value>
+  </data>
+  <data name="VoteHasBeenCast" xml:space="preserve">
+    <value>Conseguiu votar com sucesso.</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Sim</value>
+  </data>
+  <data name="ErrorMsg_AlreadyVoted" xml:space="preserve">
+    <value>Cada cidadão poderá votar somente uma vez.</value>
+  </data>
+  <data name="ErrorMsg_Captcha" xml:space="preserve">
+    <value>Captcha inválido. Tente de novo.</value>
+  </data>
+  <data name="ErrorMsg_InvalidIDInfo" xml:space="preserve">
+    <value>Entradas do Bilhete de Identidade inválidos. Tente outra vez.</value>
+  </data>
+  <data name="ErrorMsg_InvalidLength" xml:space="preserve">
+    <value>Tamanho da entrada inválido. Tente outra vez.</value>
+  </data>
+  <data name="ErrorMsg_InvalidPhone" xml:space="preserve">
+    <value>Número de telefone inválido. Tente de novo.</value>
+  </data>
+  <data name="ErrorMsg_OtherReasons" xml:space="preserve">
+    <value>Voto recusado devido a outras razões.</value>
+  </data>
+  <data name="ErrorMsg_TooManyTrials" xml:space="preserve">
+    <value>Tentativas esgotadas. Tente outra vez amanhã.</value>
+  </data>
+  <data name="ErrorMsg_Underaged" xml:space="preserve">
+    <value>O eleitor não alcançou a idade mínima para votar.</value>
+  </data>
+  <data name="BackHome" xml:space="preserve">
+    <value>Voltar á página principal</value>
+  </data>
+  <data name="Captcha" xml:space="preserve">
+    <value>CAPTCHA</value>
+  </data>
+  <data name="Captcha_Change" xml:space="preserve">
+    <value>Continuar</value>
+  </data>
+  <data name="Captcha_Inst" xml:space="preserve">
+    <value>Insire os caracteres que vê na imagem em baixo.</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirmar</value>
+  </data>
+  <data name="ContactSupport" xml:space="preserve">
+    <value>Contacte- nos caso precise de mais informações.</value>
+  </data>
+  <data name="Expired_SMS_Code" xml:space="preserve">
+    <value>Código de verificação expirado. Tente de novo.</value>
+  </data>
+  <data name="GoToCRWeb" xml:space="preserve">
+    <value>Ir para a página do Referendo Civil.</value>
+  </data>
+  <data name="ID_Card_Part" xml:space="preserve">
+    <value>Secção do Bilhete de Identidade</value>
+  </data>
+  <data name="Input6DigitVerificationCode" xml:space="preserve">
+    <value>Por favor inserir os 6 dígitos do código de verificação.</value>
+  </data>
+  <data name="Invalid_Operation" xml:space="preserve">
+    <value>Operação inválida</value>
+  </data>
+  <data name="Invalid_SMS_Code" xml:space="preserve">
+    <value>Código de verificação por SMS inválido.</value>
+  </data>
+  <data name="Next_Step" xml:space="preserve">
+    <value>Continuar</value>
+  </data>
+  <data name="SMS_CR_Code" xml:space="preserve">
+    <value>Código de verificação do Referendo Civil</value>
+  </data>
+  <data name="StepOne_InputInst1" xml:space="preserve">
+    <value>Por favor vire o seu Bilhete de Identidade de verso. Preencha três partes de dados indicados na imagem em baixo.</value>
+  </data>
+  <data name="StepOne_InputInst2" xml:space="preserve">
+    <value>8 dígitos na primeira linha posteriores a &lt;MAC e um dígito depois do símbolo &lt;</value>
+  </data>
+  <data name="StepOne_InputInst3" xml:space="preserve">
+    <value>Os últimos 7 dígitos na segunda linha</value>
+  </data>
+  <data name="StepOne_InputInst4" xml:space="preserve">
+    <value>7 dígitos da segunda linha</value>
+  </data>
+  <data name="StepOne_InputInst5" xml:space="preserve">
+    <value>Número de telefone móvel de Macau</value>
+  </data>
+  <data name="StepOne_InputInst6" xml:space="preserve">
+    <value>Um número de telefone móvel será necessário para a verificação por SMS no próximo passo.</value>
+  </data>
+  <data name="TextMessageSentTo" xml:space="preserve">
+    <value>Uma mensagem SMS contendo o código de verificação foi enviada para o número</value>
+  </data>
+  <data name="TooMany_SMS_Trials" xml:space="preserve">
+    <value>Tentativas esgotadas para a verificação do código por SMS. Por favor tente de novo.</value>
+  </data>
+  <data name="VerificationNotPassed" xml:space="preserve">
+    <value>Verificação não aceite.</value>
+  </data>
+  <data name="VotingPeriodIs" xml:space="preserve">
+    <value>O período de voto é </value>
+  </data>
+</root>

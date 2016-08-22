@@ -1,0 +1,703 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ReferendumModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Attempt">
+          <Key>
+            <PropertyRef Name="Attempt_ID" />
+          </Key>
+          <Property Name="Attempt_ID" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="ID_Number" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ID_Number_CD" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="Date_of_Issue" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="Date_of_Issue_CD" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="Date_of_Birth" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="Date_of_Birth_CD" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="Uniqueness_Verification_Status_ID" Type="int" />
+          <Property Name="Phone_Verification_Status_ID" Type="int" />
+          <Property Name="Voter_ID" Type="int" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="SMS_Code" Type="nvarchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="Attempt_Record">
+          <Key>
+            <PropertyRef Name="Attempt_Record_ID" />
+          </Key>
+          <Property Name="Attempt_Record_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Attempt_ID" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" Nullable="false" />
+          <Property Name="IP_Address" Type="nvarchar" MaxLength="45" Nullable="false" />
+          <Property Name="User_Agent" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Action" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Data" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Code">
+          <Key>
+            <PropertyRef Name="Code_ID" />
+          </Key>
+          <Property Name="Code_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Operator">
+          <Key>
+            <PropertyRef Name="Operator_ID" />
+          </Key>
+          <Property Name="Operator_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="Disabled" Type="bit" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar(max)" />
+          <Property Name="Roles" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Operator_Operation">
+          <Key>
+            <PropertyRef Name="Operator_Operation_ID" />
+          </Key>
+          <Property Name="Operator_Operation_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Operator_ID" Type="int" Nullable="false" />
+          <Property Name="Operator_Session_ID" Type="bigint" />
+          <Property Name="DateTime" Type="datetime" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IP_Address" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="User_Agent" Type="nvarchar(max)" />
+          <Property Name="Voter_ID" Type="int" />
+          <Property Name="Vote_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="Operator_Session">
+          <Key>
+            <PropertyRef Name="Operator_Session_ID" />
+          </Key>
+          <Property Name="Operator_Session_ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Operator_ID" Type="int" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Verified" Type="datetime" />
+          <Property Name="Closed" Type="datetime" />
+          <Property Name="Dynamic_Code" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Vote">
+          <Key>
+            <PropertyRef Name="Vote_ID" />
+          </Key>
+          <Property Name="Vote_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" Nullable="false" />
+          <Property Name="Motion_One" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="Motion_Two" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="Category" Type="nvarchar" MaxLength="1" Nullable="false" />
+          <Property Name="In_Person" Type="bit" Nullable="false" />
+          <Property Name="Remark" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Voter">
+          <Key>
+            <PropertyRef Name="Voter_ID" />
+          </Key>
+          <Property Name="Voter_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Number" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="8" />
+          <Property Name="Date_of_Birth" Type="date" Nullable="false" />
+          <Property Name="Vote_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Attempt_Code">
+          <End Role="Code" Type="Self.Code" Multiplicity="0..1" />
+          <End Role="Attempt" Type="Self.Attempt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Code">
+              <PropertyRef Name="Code_ID" />
+            </Principal>
+            <Dependent Role="Attempt">
+              <PropertyRef Name="Uniqueness_Verification_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Attempt_Code1">
+          <End Role="Code" Type="Self.Code" Multiplicity="0..1" />
+          <End Role="Attempt" Type="Self.Attempt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Code">
+              <PropertyRef Name="Code_ID" />
+            </Principal>
+            <Dependent Role="Attempt">
+              <PropertyRef Name="Phone_Verification_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Attempt_Record_Attempt">
+          <End Role="Attempt" Type="Self.Attempt" Multiplicity="1" />
+          <End Role="Attempt_Record" Type="Self.Attempt_Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attempt">
+              <PropertyRef Name="Attempt_ID" />
+            </Principal>
+            <Dependent Role="Attempt_Record">
+              <PropertyRef Name="Attempt_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Attempt_Voter">
+          <End Role="Voter" Type="Self.Voter" Multiplicity="0..1" />
+          <End Role="Attempt" Type="Self.Attempt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voter">
+              <PropertyRef Name="Voter_ID" />
+            </Principal>
+            <Dependent Role="Attempt">
+              <PropertyRef Name="Voter_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operator_Operation_Operator">
+          <End Role="Operator" Type="Self.Operator" Multiplicity="1" />
+          <End Role="Operator_Operation" Type="Self.Operator_Operation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operator">
+              <PropertyRef Name="Operator_ID" />
+            </Principal>
+            <Dependent Role="Operator_Operation">
+              <PropertyRef Name="Operator_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operator_Operation_Operator_Session">
+          <End Role="Operator_Session" Type="Self.Operator_Session" Multiplicity="0..1" />
+          <End Role="Operator_Operation" Type="Self.Operator_Operation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operator_Session">
+              <PropertyRef Name="Operator_Session_ID" />
+            </Principal>
+            <Dependent Role="Operator_Operation">
+              <PropertyRef Name="Operator_Session_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operator_Operation_Vote">
+          <End Role="Vote" Type="Self.Vote" Multiplicity="0..1" />
+          <End Role="Operator_Operation" Type="Self.Operator_Operation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vote">
+              <PropertyRef Name="Vote_ID" />
+            </Principal>
+            <Dependent Role="Operator_Operation">
+              <PropertyRef Name="Vote_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operator_Operation_Voter">
+          <End Role="Voter" Type="Self.Voter" Multiplicity="0..1" />
+          <End Role="Operator_Operation" Type="Self.Operator_Operation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voter">
+              <PropertyRef Name="Voter_ID" />
+            </Principal>
+            <Dependent Role="Operator_Operation">
+              <PropertyRef Name="Voter_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operator_Session_Operator">
+          <End Role="Operator" Type="Self.Operator" Multiplicity="1" />
+          <End Role="Operator_Session" Type="Self.Operator_Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operator">
+              <PropertyRef Name="Operator_ID" />
+            </Principal>
+            <Dependent Role="Operator_Session">
+              <PropertyRef Name="Operator_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Voter_Vote">
+          <End Role="Vote" Type="Self.Vote" Multiplicity="1" />
+          <End Role="Voter" Type="Self.Voter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vote">
+              <PropertyRef Name="Vote_ID" />
+            </Principal>
+            <Dependent Role="Voter">
+              <PropertyRef Name="Vote_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ReferendumModelStoreContainer">
+          <EntitySet Name="Attempt" EntityType="Self.Attempt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Attempt_Record" EntityType="Self.Attempt_Record" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Code" EntityType="Self.Code" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Operator" EntityType="Self.Operator" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Operator_Operation" EntityType="Self.Operator_Operation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Operator_Session" EntityType="Self.Operator_Session" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vote" EntityType="Self.Vote" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Voter" EntityType="Self.Voter" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Attempt_Code" Association="Self.FK_Attempt_Code">
+            <End Role="Code" EntitySet="Code" />
+            <End Role="Attempt" EntitySet="Attempt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attempt_Code1" Association="Self.FK_Attempt_Code1">
+            <End Role="Code" EntitySet="Code" />
+            <End Role="Attempt" EntitySet="Attempt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attempt_Record_Attempt" Association="Self.FK_Attempt_Record_Attempt">
+            <End Role="Attempt" EntitySet="Attempt" />
+            <End Role="Attempt_Record" EntitySet="Attempt_Record" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attempt_Voter" Association="Self.FK_Attempt_Voter">
+            <End Role="Voter" EntitySet="Voter" />
+            <End Role="Attempt" EntitySet="Attempt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operator_Operation_Operator" Association="Self.FK_Operator_Operation_Operator">
+            <End Role="Operator" EntitySet="Operator" />
+            <End Role="Operator_Operation" EntitySet="Operator_Operation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operator_Operation_Operator_Session" Association="Self.FK_Operator_Operation_Operator_Session">
+            <End Role="Operator_Session" EntitySet="Operator_Session" />
+            <End Role="Operator_Operation" EntitySet="Operator_Operation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operator_Operation_Vote" Association="Self.FK_Operator_Operation_Vote">
+            <End Role="Vote" EntitySet="Vote" />
+            <End Role="Operator_Operation" EntitySet="Operator_Operation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operator_Operation_Voter" Association="Self.FK_Operator_Operation_Voter">
+            <End Role="Voter" EntitySet="Voter" />
+            <End Role="Operator_Operation" EntitySet="Operator_Operation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operator_Session_Operator" Association="Self.FK_Operator_Session_Operator">
+            <End Role="Operator" EntitySet="Operator" />
+            <End Role="Operator_Session" EntitySet="Operator_Session" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Voter_Vote" Association="Self.FK_Voter_Vote">
+            <End Role="Vote" EntitySet="Vote" />
+            <End Role="Voter" EntitySet="Voter" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ReferendumModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Attempt">
+          <Key>
+            <PropertyRef Name="Attempt_ID" />
+          </Key>
+          <Property Name="Attempt_ID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Number" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_Number_CD" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date_of_Issue" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date_of_Issue_CD" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date_of_Birth" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date_of_Birth_CD" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="8" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Uniqueness_Verification_Status_ID" Type="Int32" />
+          <Property Name="Phone_Verification_Status_ID" Type="Int32" />
+          <Property Name="Voter_ID" Type="Int32" />
+          <NavigationProperty Name="Attempt_Record" Relationship="Self.FK_Attempt_Record_Attempt" FromRole="Attempt" ToRole="Attempt_Record" />
+          <NavigationProperty Name="Voter" Relationship="Self.FK_Attempt_Voter" FromRole="Attempt" ToRole="Voter" />
+          <NavigationProperty Name="Uniqueness_Verification_Status" Relationship="ReferendumModel.FK_Attempt_Code" FromRole="Attempt" ToRole="Code" />
+          <NavigationProperty Name="Phone_Verification_Status" Relationship="ReferendumModel.FK_Attempt_Code1" FromRole="Attempt" ToRole="Code" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SMS_Code" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Attempt_Record">
+          <Key>
+            <PropertyRef Name="Attempt_Record_ID" />
+          </Key>
+          <Property Name="Attempt_Record_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Attempt_ID" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IP_Address" Type="String" MaxLength="45" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="User_Agent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Attempt" Relationship="Self.FK_Attempt_Record_Attempt" FromRole="Attempt_Record" ToRole="Attempt" />
+        </EntityType>
+        <EntityType Name="Code">
+          <Key>
+            <PropertyRef Name="Code_ID" />
+          </Key>
+          <Property Name="Code_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Attempts_by_Uniqueness_Verification_Status" Relationship="ReferendumModel.FK_Attempt_Code" FromRole="Code" ToRole="Attempt" />
+          <NavigationProperty Name="Attempts_by_Phone_Verification_Status" Relationship="ReferendumModel.FK_Attempt_Code1" FromRole="Code" ToRole="Attempt" />
+        </EntityType>
+        <EntityType Name="Vote">
+          <Key>
+            <PropertyRef Name="Vote_ID" />
+          </Key>
+          <Property Name="Vote_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Motion_One" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Motion_Two" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Voters" Relationship="Self.FK_Voter_Vote" FromRole="Vote" ToRole="Voter" />
+          <Property Name="In_Person" Type="Boolean" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Operator_Operation" Relationship="ReferendumModel.FK_Operator_Operation_Vote" FromRole="Vote" ToRole="Operator_Operation" />
+        </EntityType>
+        <EntityType Name="Voter">
+          <Key>
+            <PropertyRef Name="Voter_ID" />
+          </Key>
+          <Property Name="Voter_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Number" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Date_of_Birth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Vote_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Attempts" Relationship="Self.FK_Attempt_Voter" FromRole="Voter" ToRole="Attempt" />
+          <NavigationProperty Name="Vote" Relationship="Self.FK_Voter_Vote" FromRole="Voter" ToRole="Vote" />
+          <NavigationProperty Name="Operator_Operation" Relationship="ReferendumModel.FK_Operator_Operation_Voter" FromRole="Voter" ToRole="Operator_Operation" />
+        </EntityType>
+        <Association Name="FK_Attempt_Record_Attempt">
+          <End Role="Attempt" Type="Self.Attempt" Multiplicity="1" />
+          <End Role="Attempt_Record" Type="Self.Attempt_Record" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attempt">
+              <PropertyRef Name="Attempt_ID" />
+            </Principal>
+            <Dependent Role="Attempt_Record">
+              <PropertyRef Name="Attempt_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Attempt_Voter">
+          <End Role="Voter" Type="Self.Voter" Multiplicity="0..1" />
+          <End Role="Attempt" Type="Self.Attempt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voter">
+              <PropertyRef Name="Voter_ID" />
+            </Principal>
+            <Dependent Role="Attempt">
+              <PropertyRef Name="Voter_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Voter_Vote">
+          <End Role="Vote" Type="Self.Vote" Multiplicity="1" />
+          <End Role="Voter" Type="Self.Voter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vote">
+              <PropertyRef Name="Vote_ID" />
+            </Principal>
+            <Dependent Role="Voter">
+              <PropertyRef Name="Vote_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ReferendumEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Attempts" EntityType="Self.Attempt" />
+          <EntitySet Name="Attempt_Record" EntityType="Self.Attempt_Record" />
+          <EntitySet Name="Codes" EntityType="Self.Code" />
+          <EntitySet Name="Votes" EntityType="Self.Vote" />
+          <EntitySet Name="Voters" EntityType="Self.Voter" />
+          <AssociationSet Name="FK_Attempt_Record_Attempt" Association="Self.FK_Attempt_Record_Attempt">
+            <End Role="Attempt" EntitySet="Attempts" />
+            <End Role="Attempt_Record" EntitySet="Attempt_Record" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attempt_Voter" Association="Self.FK_Attempt_Voter">
+            <End Role="Voter" EntitySet="Voters" />
+            <End Role="Attempt" EntitySet="Attempts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Voter_Vote" Association="Self.FK_Voter_Vote">
+            <End Role="Vote" EntitySet="Votes" />
+            <End Role="Voter" EntitySet="Voters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attempt_Code" Association="ReferendumModel.FK_Attempt_Code">
+            <End Role="Code" EntitySet="Codes" />
+            <End Role="Attempt" EntitySet="Attempts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Attempt_Code1" Association="ReferendumModel.FK_Attempt_Code1">
+            <End Role="Code" EntitySet="Codes" />
+            <End Role="Attempt" EntitySet="Attempts" />
+          </AssociationSet>
+          <EntitySet Name="Operators" EntityType="ReferendumModel.Operator" />
+          <EntitySet Name="Operator_Operation" EntityType="ReferendumModel.Operator_Operation" />
+          <EntitySet Name="Operator_Session" EntityType="ReferendumModel.Operator_Session" />
+          <AssociationSet Name="FK_Operator_Operation_Operator" Association="ReferendumModel.FK_Operator_Operation_Operator">
+            <End Role="Operator" EntitySet="Operators" />
+            <End Role="Operator_Operation" EntitySet="Operator_Operation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operator_Session_Operator" Association="ReferendumModel.FK_Operator_Session_Operator">
+            <End Role="Operator" EntitySet="Operators" />
+            <End Role="Operator_Session" EntitySet="Operator_Session" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operator_Operation_Operator_Session" Association="ReferendumModel.FK_Operator_Operation_Operator_Session">
+            <End Role="Operator_Session" EntitySet="Operator_Session" />
+            <End Role="Operator_Operation" EntitySet="Operator_Operation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operator_Operation_Vote" Association="ReferendumModel.FK_Operator_Operation_Vote">
+            <End Role="Vote" EntitySet="Votes" />
+            <End Role="Operator_Operation" EntitySet="Operator_Operation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operator_Operation_Voter" Association="ReferendumModel.FK_Operator_Operation_Voter">
+            <End Role="Voter" EntitySet="Voters" />
+            <End Role="Operator_Operation" EntitySet="Operator_Operation" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_Attempt_Code">
+          <End Type="ReferendumModel.Code" Role="Code" Multiplicity="0..1" />
+          <End Type="ReferendumModel.Attempt" Role="Attempt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Code">
+              <PropertyRef Name="Code_ID" />
+            </Principal>
+            <Dependent Role="Attempt">
+              <PropertyRef Name="Uniqueness_Verification_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Attempt_Code1">
+          <End Type="ReferendumModel.Code" Role="Code" Multiplicity="0..1" />
+          <End Type="ReferendumModel.Attempt" Role="Attempt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Code">
+              <PropertyRef Name="Code_ID" />
+            </Principal>
+            <Dependent Role="Attempt">
+              <PropertyRef Name="Phone_Verification_Status_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Operator">
+          <Key>
+            <PropertyRef Name="Operator_ID" />
+          </Key>
+          <Property Name="Operator_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Disabled" Type="Boolean" Nullable="false" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Operator_Operation" Relationship="ReferendumModel.FK_Operator_Operation_Operator" FromRole="Operator" ToRole="Operator_Operation" />
+          <NavigationProperty Name="Operator_Session" Relationship="ReferendumModel.FK_Operator_Session_Operator" FromRole="Operator" ToRole="Operator_Session" />
+          <Property Name="Roles" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Operator_Operation">
+          <Key>
+            <PropertyRef Name="Operator_Operation_ID" />
+          </Key>
+          <Property Name="Operator_Operation_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Operator_ID" Type="Int32" Nullable="false" />
+          <Property Name="Operator_Session_ID" Type="Int64" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IP_Address" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="User_Agent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Voter_ID" Type="Int32" />
+          <Property Name="Vote_ID" Type="Int32" />
+          <NavigationProperty Name="Operator" Relationship="ReferendumModel.FK_Operator_Operation_Operator" FromRole="Operator_Operation" ToRole="Operator" />
+          <NavigationProperty Name="Operator_Session" Relationship="ReferendumModel.FK_Operator_Operation_Operator_Session" FromRole="Operator_Operation" ToRole="Operator_Session" />
+          <NavigationProperty Name="Vote" Relationship="ReferendumModel.FK_Operator_Operation_Vote" FromRole="Operator_Operation" ToRole="Vote" />
+          <NavigationProperty Name="Voter" Relationship="ReferendumModel.FK_Operator_Operation_Voter" FromRole="Operator_Operation" ToRole="Voter" />
+        </EntityType>
+        <EntityType Name="Operator_Session">
+          <Key>
+            <PropertyRef Name="Operator_Session_ID" />
+          </Key>
+          <Property Name="Operator_Session_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Operator_ID" Type="Int32" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Verified" Type="DateTime" Precision="3" />
+          <Property Name="Closed" Type="DateTime" Precision="3" />
+          <Property Name="Dynamic_Code" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Operator" Relationship="ReferendumModel.FK_Operator_Session_Operator" FromRole="Operator_Session" ToRole="Operator" />
+          <NavigationProperty Name="Operator_Operation" Relationship="ReferendumModel.FK_Operator_Operation_Operator_Session" FromRole="Operator_Session" ToRole="Operator_Operation" />
+        </EntityType>
+        <Association Name="FK_Operator_Operation_Operator">
+          <End Type="ReferendumModel.Operator" Role="Operator" Multiplicity="1" />
+          <End Type="ReferendumModel.Operator_Operation" Role="Operator_Operation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operator">
+              <PropertyRef Name="Operator_ID" />
+            </Principal>
+            <Dependent Role="Operator_Operation">
+              <PropertyRef Name="Operator_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operator_Session_Operator">
+          <End Type="ReferendumModel.Operator" Role="Operator" Multiplicity="1" />
+          <End Type="ReferendumModel.Operator_Session" Role="Operator_Session" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operator">
+              <PropertyRef Name="Operator_ID" />
+            </Principal>
+            <Dependent Role="Operator_Session">
+              <PropertyRef Name="Operator_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operator_Operation_Operator_Session">
+          <End Type="ReferendumModel.Operator_Session" Role="Operator_Session" Multiplicity="0..1" />
+          <End Type="ReferendumModel.Operator_Operation" Role="Operator_Operation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Operator_Session">
+              <PropertyRef Name="Operator_Session_ID" />
+            </Principal>
+            <Dependent Role="Operator_Operation">
+              <PropertyRef Name="Operator_Session_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operator_Operation_Vote">
+          <End Type="ReferendumModel.Vote" Role="Vote" Multiplicity="0..1" />
+          <End Type="ReferendumModel.Operator_Operation" Role="Operator_Operation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vote">
+              <PropertyRef Name="Vote_ID" />
+            </Principal>
+            <Dependent Role="Operator_Operation">
+              <PropertyRef Name="Vote_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operator_Operation_Voter">
+          <End Type="ReferendumModel.Voter" Role="Voter" Multiplicity="0..1" />
+          <End Type="ReferendumModel.Operator_Operation" Role="Operator_Operation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Voter">
+              <PropertyRef Name="Voter_ID" />
+            </Principal>
+            <Dependent Role="Operator_Operation">
+              <PropertyRef Name="Voter_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ReferendumModelStoreContainer" CdmEntityContainer="ReferendumEntities">
+          <EntitySetMapping Name="Attempts">
+            <EntityTypeMapping TypeName="ReferendumModel.Attempt">
+              <MappingFragment StoreEntitySet="Attempt">
+                <ScalarProperty Name="SMS_Code" ColumnName="SMS_Code" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Attempt_ID" ColumnName="Attempt_ID" />
+                <ScalarProperty Name="ID_Number" ColumnName="ID_Number" />
+                <ScalarProperty Name="ID_Number_CD" ColumnName="ID_Number_CD" />
+                <ScalarProperty Name="Date_of_Issue" ColumnName="Date_of_Issue" />
+                <ScalarProperty Name="Date_of_Issue_CD" ColumnName="Date_of_Issue_CD" />
+                <ScalarProperty Name="Date_of_Birth" ColumnName="Date_of_Birth" />
+                <ScalarProperty Name="Date_of_Birth_CD" ColumnName="Date_of_Birth_CD" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Uniqueness_Verification_Status_ID" ColumnName="Uniqueness_Verification_Status_ID" />
+                <ScalarProperty Name="Phone_Verification_Status_ID" ColumnName="Phone_Verification_Status_ID" />
+                <ScalarProperty Name="Voter_ID" ColumnName="Voter_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Attempt_Record">
+            <EntityTypeMapping TypeName="ReferendumModel.Attempt_Record">
+              <MappingFragment StoreEntitySet="Attempt_Record">
+                <ScalarProperty Name="Attempt_Record_ID" ColumnName="Attempt_Record_ID" />
+                <ScalarProperty Name="Attempt_ID" ColumnName="Attempt_ID" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
+                <ScalarProperty Name="User_Agent" ColumnName="User_Agent" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Codes">
+            <EntityTypeMapping TypeName="ReferendumModel.Code">
+              <MappingFragment StoreEntitySet="Code">
+                <ScalarProperty Name="Code_ID" ColumnName="Code_ID" />
+                <ScalarProperty Name="Name" ColumnName="Code" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Votes">
+            <EntityTypeMapping TypeName="ReferendumModel.Vote">
+              <MappingFragment StoreEntitySet="Vote">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="In_Person" ColumnName="In_Person" />
+                <ScalarProperty Name="Vote_ID" ColumnName="Vote_ID" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="Motion_One" ColumnName="Motion_One" />
+                <ScalarProperty Name="Motion_Two" ColumnName="Motion_Two" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Voters">
+            <EntityTypeMapping TypeName="ReferendumModel.Voter">
+              <MappingFragment StoreEntitySet="Voter">
+                <ScalarProperty Name="Voter_ID" ColumnName="Voter_ID" />
+                <ScalarProperty Name="ID_Number" ColumnName="ID_Number" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Date_of_Birth" ColumnName="Date_of_Birth" />
+                <ScalarProperty Name="Vote_ID" ColumnName="Vote_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Operators">
+            <EntityTypeMapping TypeName="ReferendumModel.Operator">
+              <MappingFragment StoreEntitySet="Operator">
+                <ScalarProperty Name="Roles" ColumnName="Roles" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Disabled" ColumnName="Disabled" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Operator_ID" ColumnName="Operator_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Operator_Operation">
+            <EntityTypeMapping TypeName="ReferendumModel.Operator_Operation">
+              <MappingFragment StoreEntitySet="Operator_Operation">
+                <ScalarProperty Name="Vote_ID" ColumnName="Vote_ID" />
+                <ScalarProperty Name="Voter_ID" ColumnName="Voter_ID" />
+                <ScalarProperty Name="User_Agent" ColumnName="User_Agent" />
+                <ScalarProperty Name="IP_Address" ColumnName="IP_Address" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="Operator_Session_ID" ColumnName="Operator_Session_ID" />
+                <ScalarProperty Name="Operator_ID" ColumnName="Operator_ID" />
+                <ScalarProperty Name="Operator_Operation_ID" ColumnName="Operator_Operation_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Operator_Session">
+            <EntityTypeMapping TypeName="ReferendumModel.Operator_Session">
+              <MappingFragment StoreEntitySet="Operator_Session">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Dynamic_Code" ColumnName="Dynamic_Code" />
+                <ScalarProperty Name="Closed" ColumnName="Closed" />
+                <ScalarProperty Name="Verified" ColumnName="Verified" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Operator_ID" ColumnName="Operator_ID" />
+                <ScalarProperty Name="Operator_Session_ID" ColumnName="Operator_Session_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

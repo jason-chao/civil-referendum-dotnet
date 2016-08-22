@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = @CRResources.Resources.PrivacyStatement_Title;
+}
+
+<h2>@CRResources.Resources.PrivacyStatement_Title</h2>
+
+<div class="well">
+    <p>
+        @CRResources.Resources.PrivacyStatement_P1
+    </p>
+    <p>
+        @CRResources.Resources.PrivacyStatement_P2
+    </p>
+    <p>
+        @CRResources.Resources.PrivacyStatement_P3
+    </p>
+</div>
+
+<div class="row">
+    <a href='@Url.Action("Index","Home")' class="btn btn-lg btn-danger btn-block">@CRResources.Resources.Disagree</a>    
+</div>
+<hr />
+<div class="row">
+    <a href='@Url.Action("StepOne","Home")' class="btn btn-lg btn-success btn-block">@CRResources.Resources.Agree</a>
+</div>

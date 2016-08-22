@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = @CRResources.Resources.StepTwo;
+}
+
+<h2>@CRResources.Resources.StepTwo</h2>
+
+@{
+    if (ViewBag.ErrorMessages != null)
+    {
+        var errorMessageList = ViewBag.ErrorMessages as System.Collections.Generic.List<string>;
+
+        if (errorMessageList.Count > 0)
+        {
+            <div class="alert alert-danger alert-dismissable">
+             <b>@CRResources.Resources.VerificationNotPassed :</b> @ViewBag.ErrorMessage
+             <ul>
+                 @foreach (string str in errorMessageList)
+                 {
+                     <li>@str</li>
+                    }
+                </ul>
+            </div>
+        }
+    }
+}
+
+<form action='@Url.Action("StepTwo")' method="post">
+    <table class="table table-condensed table-striped">
+        <tr>
+            <td colspan="2" class="text-center">
+                @CRResources.Resources.TextMessageSentTo @ViewBag.Phone . @CRResources.Resources.Input6DigitVerificationCode
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right">@CRResources.Resources.SMS_CR_Code</td>
+            <td class="text-left">
+                <input type="password" size="6" maxlength="6" id="SMS_Code" name="SMS_Code" />
+            </td>
+        </tr>
+    </table>
+    <div class="row">
+        <input type="hidden" name="Trial_ID" id="Trial_ID" value="@ViewBag.Attempt_ID" />
+        <button type="submit" class="btn btn-lg btn-warning btn-block">@CRResources.Resources.Confirm</button>
+    </div>
+</form>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('form').submit(function () {
+            $('button[type=submit]', this).attr('disabled', 'disabled');
+        });
+    });
+</script>

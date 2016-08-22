@@ -1,0 +1,140 @@
+﻿@model ReferendumStatistics.Models.TurnoutViewModel
+
+@using CaptchaMvc.HtmlHelpers
+
+@{
+    ViewBag.Title = "投票人數 Voter Turnout";
+}
+
+<h2>
+    投票人數 Voter Turnout
+</h2>
+
+<form action='@Url.Action("Index")' method="post">
+    @Html.MathCaptcha()
+    <div>
+        <button type="submit">檢視 View</button>
+    </div>
+</form>
+
+<hr />
+@if (Model.MotionOneOut)
+{
+    <div class="row">
+        <table class="table table-condensed">
+            <tr>
+                <th class="text-center">命題一 Motion 1</th>
+                <th>A. 是 Yes</th>
+                <th>B. 否 No</th>
+                <th>C. 棄權 Abstention</th>
+                <th>白票 Blank</th>
+            </tr>
+            <tr>
+                <td class="text-center">18歲或以上組別 Group 18+</td>
+                <td>@Model.MotionOneAdult.A.ToString("#,##0")</td>
+                <td>@Model.MotionOneAdult.B.ToString("#,##0")</td>
+                <td>@Model.MotionOneAdult.C.ToString("#,##0")</td>
+                <td>@Model.MotionOneAdult.Blank.ToString("#,##0")</td>
+            </tr>
+            <tr>
+                <td class="text-center">16-17歲組別 Group 16-17</td>
+                <td>@Model.MotionOneTeen.A.ToString("#,##0")</td>
+                <td>@Model.MotionOneTeen.B.ToString("#,##0")</td>
+                <td>@Model.MotionOneTeen.C.ToString("#,##0")</td>
+                <td>@Model.MotionOneTeen.Blank.ToString("#,##0")</td>
+            </tr>
+            <tr class="success">
+                <td class="text-center">總計 Total</td>
+                <td>@Model.MotionOneTotal.A.ToString("#,##0")</td>
+                <td>@Model.MotionOneTotal.B.ToString("#,##0")</td>
+                <td>@Model.MotionOneTotal.C.ToString("#,##0")</td>
+                <td>@Model.MotionOneTotal.Blank.ToString("#,##0")</td>
+            </tr>
+        </table>
+    </div>
+    <hr />
+}
+
+@if (Model.MotionTwoOut)
+{
+    <div class="row">
+        <table class="table table-condensed">
+            <tr>
+                <th class="text-center">命題二 Motion 2</th>
+                <th>A. 是 Yes</th>
+                <th>B. 否 No</th>
+                <th>C. 棄權 Abstention</th>
+                <th>白票 Blank</th>
+            </tr>
+            <tr>
+                <td class="text-center">18歲或以上組別 Group 18+</td>
+                <td>@Model.MotionTwoAdult.A.ToString("#,##0")</td>
+                <td>@Model.MotionTwoAdult.B.ToString("#,##0")</td>
+                <td>@Model.MotionTwoAdult.C.ToString("#,##0")</td>
+                <td>@Model.MotionTwoAdult.Blank.ToString("#,##0")</td>
+            </tr>
+            <tr>
+                <td class="text-center">16-17歲組別 Group 16-17</td>
+                <td>@Model.MotionTwoTeen.A.ToString("#,##0")</td>
+                <td>@Model.MotionTwoTeen.B.ToString("#,##0")</td>
+                <td>@Model.MotionTwoTeen.C.ToString("#,##0")</td>
+                <td>@Model.MotionTwoTeen.Blank.ToString("#,##0")</td>
+            </tr>
+            <tr class="success">
+                <td class="text-center">總計 Total</td>
+                <td>@Model.MotionTwoTotal.A.ToString("#,##0")</td>
+                <td>@Model.MotionTwoTotal.B.ToString("#,##0")</td>
+                <td>@Model.MotionTwoTotal.C.ToString("#,##0")</td>
+                <td>@Model.MotionTwoTotal.Blank.ToString("#,##0")</td>
+            </tr>
+        </table>
+    </div>
+    <hr />
+}
+
+@if (Model.TimeSlotList.Count() > 0)
+{
+    <div class="row">
+        @if (Model.MotionOneOut || Model.MotionTwoOut)
+        {
+            <div class="well well-sm">
+                @Html.ActionLink("下載選票資料 Download all votes", "Download", new { }, new { target = "_blank" })
+            </div>
+        }
+        else
+        {
+            <div class="well well-sm">
+                每兩小時更新。 Updated every two hours.
+            </div>
+        }
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+            <tr>
+                <th class="text-center">
+                    時間段 Timeslot
+                </th>
+                <th class="text-center">
+                    投票人數 Voters
+                </th>
+                <th class="text-center">
+                    累計 Cumulative
+                </th>
+            </tr>
+            @foreach (var timeslot in Model.TimeSlotList)
+            {
+                <tr>
+                    <td class="text-center">
+                        @string.Format("{0:dd/MM HH:mm}", timeslot.From) - @string.Format("{0:dd/MM HH:mm}", timeslot.To)
+                    </td>
+                    <td class="text-center">
+                        @timeslot.Number.ToString("#,##0")
+                    </td>
+                    <td class="text-center">
+                        @timeslot.CumulativeNumber.ToString("#,##0")
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+}

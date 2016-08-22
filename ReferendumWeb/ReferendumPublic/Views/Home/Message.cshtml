@@ -1,0 +1,18 @@
+﻿@model ReferendumPublic.Models.MessageViewModel
+
+@{
+    ViewBag.Title = @Model.Message_Title;
+}
+
+<h2>@Model.Message_Title</h2>
+
+<div>
+    @Model.Message
+</div>
+
+@if (Model.SuggestedAction_GoHome)
+{
+    <div class="row">
+        <a href='@Url.Action("Index")' class="btn btn-lg btn-default btn-block">@CRResources.Resources.BackHome</a>
+    </div>
+}

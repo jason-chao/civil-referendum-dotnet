@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Abstention" xml:space="preserve">
+    <value>棄權</value>
+  </data>
+  <data name="Agree" xml:space="preserve">
+    <value>同意</value>
+  </data>
+  <data name="BallotPaper" xml:space="preserve">
+    <value>選票</value>
+  </data>
+  <data name="Blank" xml:space="preserve">
+    <value>白票</value>
+  </data>
+  <data name="Caution" xml:space="preserve">
+    <value>注意：</value>
+  </data>
+  <data name="Check" xml:space="preserve">
+    <value>檢查</value>
+  </data>
+  <data name="CivilReferendum2014" xml:space="preserve">
+    <value>2014 特首選舉民間公投</value>
+  </data>
+  <data name="ConfirmYourChoices" xml:space="preserve">
+    <value>確認你的選擇：</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>繼續</value>
+  </data>
+  <data name="DateOfBirth" xml:space="preserve">
+    <value>出生日期</value>
+  </data>
+  <data name="Disagree" xml:space="preserve">
+    <value>不同意</value>
+  </data>
+  <data name="IDCardNumber" xml:space="preserve">
+    <value>身份證號碼</value>
+  </data>
+  <data name="InPersonVoting" xml:space="preserve">
+    <value>親身投票</value>
+  </data>
+  <data name="KeepYourIDCard" xml:space="preserve">
+    <value>離開前，請留意保管好你的身份證。</value>
+  </data>
+  <data name="MotionOne" xml:space="preserve">
+    <value>命題1：</value>
+  </data>
+  <data name="MotionTwo" xml:space="preserve">
+    <value>命題2：</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="OverridingMessage" xml:space="preserve">
+    <value>我們偵測到你的身份證號碼曾在網上投票被使用。現在你有一次機會，在親身投票時取代之前使用你身份證號碼作出的網上投票。</value>
+  </data>
+  <data name="PrivacyStatement_P1" xml:space="preserve">
+    <value>根據《個人資料保護法》相關規定，請知悉：</value>
+  </data>
+  <data name="PrivacyStatement_P2" xml:space="preserve">
+    <value>你的個人資料由開放澳門協負責處理。你現自願向本會提供身份證號碼、電話號碼以及出生日期，用以參與無法律效力的民間投票活動。在投票期內你的個人資料將會被臨時儲存在由開放澳門協會管理的電腦系統內。在民間公投最終核實後，你的個人資料將從我們的系統被永久性刪除。收集個人資料的目的純粹為防止重覆投票，以保證「一人一票」參與2014民間公投。高度敏感資料，例如你的身份證號碼，會用SHA-512演算法加密成不可還原的亂數。</value>
+  </data>
+  <data name="PrivacyStatement_P3" xml:space="preserve">
+    <value>如果你同意提供你的個人資料用以參與民間公投活動向特首選舉表達意見，請按以下按鈕。</value>
+  </data>
+  <data name="PrivacyStatement_Title" xml:space="preserve">
+    <value>私隱聲明</value>
+  </data>
+  <data name="ProceedToBallotPaper" xml:space="preserve">
+    <value>前往選票</value>
+  </data>
+  <data name="QuestionOne" xml:space="preserve">
+    <value>命題1：你是否贊成2019年澳門行政長官由普選產生？</value>
+  </data>
+  <data name="QuestionTwo" xml:space="preserve">
+    <value>命題2：你是否信任2014澳門行政長官選舉唯一候選人崔世安成為行政長官？</value>
+  </data>
+  <data name="ReturnTabletComputer" xml:space="preserve">
+    <value>請將此電腦交回到民間公投義工手中並取回你的身份證。</value>
+  </data>
+  <data name="StepOne" xml:space="preserve">
+    <value>第一步：投票者資料驗證</value>
+  </data>
+  <data name="StepTwo" xml:space="preserve">
+    <value>第二步：短訊驗證</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>提交</value>
+  </data>
+  <data name="Support" xml:space="preserve">
+    <value>使用支援</value>
+  </data>
+  <data name="ThanksForVoting" xml:space="preserve">
+    <value>感謝你參與2014特首選舉民間公投。</value>
+  </data>
+  <data name="ThankYou" xml:space="preserve">
+    <value>多謝</value>
+  </data>
+  <data name="VoteHasBeenCast" xml:space="preserve">
+    <value>你已成功投票</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="ErrorMsg_AlreadyVoted" xml:space="preserve">
+    <value>未能允許重覆投票</value>
+  </data>
+  <data name="ErrorMsg_Captcha" xml:space="preserve">
+    <value>圖片驗證碼不正確，請再試。</value>
+  </data>
+  <data name="ErrorMsg_InvalidIDInfo" xml:space="preserve">
+    <value>身份證資料輸入不正確，請再試。</value>
+  </data>
+  <data name="ErrorMsg_InvalidLength" xml:space="preserve">
+    <value>有資料長度不正確，請再試。</value>
+  </data>
+  <data name="ErrorMsg_InvalidPhone" xml:space="preserve">
+    <value>電話格式不正確，請再試。</value>
+  </data>
+  <data name="ErrorMsg_TooManyTrials" xml:space="preserve">
+    <value>同一資料嘗試驗證太多次，請明天再試。</value>
+  </data>
+  <data name="ErrorMsg_Underaged" xml:space="preserve">
+    <value>未達最低投票年齡</value>
+  </data>
+  <data name="BackHome" xml:space="preserve">
+    <value>返回主頁</value>
+  </data>
+  <data name="Captcha" xml:space="preserve">
+    <value>圖片驗證碼</value>
+  </data>
+  <data name="Captcha_Change" xml:space="preserve">
+    <value>換另一張</value>
+  </data>
+  <data name="Captcha_Inst" xml:space="preserve">
+    <value>請輸入圖片所顯示之文字</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="ContactSupport" xml:space="preserve">
+    <value>如有查詢或需要技術支援，請聯絡我們。</value>
+  </data>
+  <data name="ErrorMsg_OtherReasons" xml:space="preserve">
+    <value>其他原因，請再試。</value>
+  </data>
+  <data name="Expired_SMS_Code" xml:space="preserve">
+    <value>短訊驗證碼已逾期，請重新再試</value>
+  </data>
+  <data name="GoToCRWeb" xml:space="preserve">
+    <value>到民間公投網站</value>
+  </data>
+  <data name="ID_Card_Part" xml:space="preserve">
+    <value>身份證部份</value>
+  </data>
+  <data name="Input6DigitVerificationCode" xml:space="preserve">
+    <value>請輸入收到的6位數字驗證碼。</value>
+  </data>
+  <data name="Invalid_Operation" xml:space="preserve">
+    <value>無效操作</value>
+  </data>
+  <data name="Invalid_SMS_Code" xml:space="preserve">
+    <value>短訊驗證碼不正確</value>
+  </data>
+  <data name="Next_Step" xml:space="preserve">
+    <value>下一步</value>
+  </data>
+  <data name="SMS_CR_Code" xml:space="preserve">
+    <value>民間公投驗證碼</value>
+  </data>
+  <data name="StepOne_InputInst1" xml:space="preserve">
+    <value>請拿出你的澳門身份證並轉至背面，分別輸入三組在如圖所示位置的資料：</value>
+  </data>
+  <data name="StepOne_InputInst2" xml:space="preserve">
+    <value>第一行開首 I&lt;MAC 之後8位數字，及其 &lt; 之後1位數字</value>
+  </data>
+  <data name="StepOne_InputInst3" xml:space="preserve">
+    <value>第一行結尾的7位數字</value>
+  </data>
+  <data name="StepOne_InputInst4" xml:space="preserve">
+    <value>第二行的首7位數字</value>
+  </data>
+  <data name="StepOne_InputInst5" xml:space="preserve">
+    <value>澳門流動電話號碼</value>
+  </data>
+  <data name="StepOne_InputInst6" xml:space="preserve">
+    <value>請提供有效的流動電話號碼，將需於下一步接收驗證碼短訊</value>
+  </data>
+  <data name="TextMessageSentTo" xml:space="preserve">
+    <value>驗證短訊已發送至你提供的流動電話號碼</value>
+  </data>
+  <data name="TooMany_SMS_Trials" xml:space="preserve">
+    <value>短訊驗證錯誤次數過多，請重頭開始投票。</value>
+  </data>
+  <data name="VerificationNotPassed" xml:space="preserve">
+    <value>未能通過</value>
+  </data>
+  <data name="VotingPeriodIs" xml:space="preserve">
+    <value>投票期為 </value>
+  </data>
+</root>

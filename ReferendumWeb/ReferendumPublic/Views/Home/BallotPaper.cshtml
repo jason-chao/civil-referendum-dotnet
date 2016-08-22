@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = @CRResources.Resources.BallotPaper;
+}
+
+<h2>@CRResources.Resources.BallotPaper</h2>
+
+<form action='@Url.Action("CastTheBallot")' method="post" id="ballotForm">
+
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2 class="panel-title">@CRResources.Resources.QuestionOne</h2>
+            </div>
+            <div class="panel-body">
+                <button type="button" class="btn btn-lg btn-block btn-default btn_motion1A" value="A. @CRResources.Resources.Yes"><span id="okayicon_motion1A" class="glyphicon glyphicon-ok hidden"></span> A. @CRResources.Resources.Yes</button>
+                <button type="button" class="btn btn-lg btn-block btn-default btn_motion1B" value="B. @CRResources.Resources.No"><span id="okayicon_motion1B" class="glyphicon glyphicon-ok hidden"></span> B. @CRResources.Resources.No</button>
+                <button type="button" class="btn btn-lg btn-block btn-default btn_motion1C" value="C. @CRResources.Resources.Abstention"><span id="okayicon_motion1C" class="glyphicon glyphicon-ok hidden"></span> C. @CRResources.Resources.Abstention</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2 class="panel-title">@CRResources.Resources.QuestionTwo</h2>
+            </div>
+            <div class="panel-body">
+                <button type="button" class="btn btn-lg btn-block btn-default btn_motion2A" value="A. @CRResources.Resources.Yes"><span id="okayicon_motion2A" class="glyphicon glyphicon-ok hidden"></span> A. @CRResources.Resources.Yes</button>
+                <button type="button" class="btn btn-lg btn-block btn-default btn_motion2B" value="B. @CRResources.Resources.No"><span id="okayicon_motion2B" class="glyphicon glyphicon-ok hidden"></span> B. @CRResources.Resources.No</button>
+                <button type="button" class="btn btn-lg btn-block btn-default btn_motion2C" value="C. @CRResources.Resources.Abstention"><span id="okayicon_motion2C" class="glyphicon glyphicon-ok hidden"></span> C. @CRResources.Resources.Abstention</button>
+            </div>
+        </div>
+    </div>
+
+    @*<input type="hidden" value="@ViewBag.IDCardNumber" name="IDCardNumber" />
+    <input type="hidden" value="@ViewBag.DateOfBirth" name="DateOfBirth" />*@
+    <input type="hidden" value="@ViewBag.Attempt_ID" name="Trial_ID" />
+    <input type="hidden" value="-@CRResources.Resources.Blank-" name="MotionOne" id="MotionOne" />
+    <input type="hidden" value="-@CRResources.Resources.Blank-" name="MotionTwo" id="MotionTwo" />
+    <div class="row">
+        <button type="submit" class="btn btn-lg btn-block btn-warning" value="">@CRResources.Resources.Submit</button>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+
+            $('#ballotForm').submit(function () {
+                var confirmationResult = confirm("@CRResources.Resources.ConfirmYourChoices\r\n @CRResources.Resources.MotionOne" + $('#MotionOne').val() + "\r\n @CRResources.Resources.MotionTwo" + $('#MotionTwo').val());
+                if (confirmationResult)
+                {
+                    $('button[type=submit]', this).attr('disabled', 'disabled');
+                }
+
+                return confirmationResult;
+            });
+
+            $("button[class*='btn_motion1']").click(function () {
+                $("button[class*='btn_motion1']").removeClass('btn-success');
+                $("button[class*='btn_motion1']").removeClass('btn-default');
+                $("button[class*='btn_motion1']").addClass('btn-default');
+
+                $(this).removeClass('btn-default');
+                $(this).addClass('btn-success');
+
+                var theOption = $(this).val();
+
+                $('#MotionOne').val(theOption);
+                $("span[id*='okayicon_motion1']").remove('hidden');
+                $("span[id*='okayicon_motion1']").addClass('hidden');
+                $('#okayicon_motion1' + theOption[0]).removeClass('hidden');
+            });
+
+            $("button[class*='btn_motion2']").click(function () {
+                $("button[class*='btn_motion2']").removeClass('btn-success');
+                $("button[class*='btn_motion2']").removeClass('btn-default');
+                $("button[class*='btn_motion2']").addClass('btn-default');
+
+                $(this).removeClass('btn-default');
+                $(this).addClass('btn-success');
+
+                var theOption = $(this).val();
+
+                $('#MotionTwo').val(theOption);
+                $("span[id*='okayicon_motion2']").remove('hidden');
+                $("span[id*='okayicon_motion2']").addClass('hidden');
+                $('#okayicon_motion2' + theOption[0]).removeClass('hidden');
+            });
+
+        });
+    </script>
+</form>
+

@@ -1,0 +1,119 @@
+﻿
+@using CaptchaMvc.HtmlHelpers
+
+@{
+    ViewBag.Title = @CRResources.Resources.StepOne;
+}
+
+<h2>@CRResources.Resources.StepOne</h2>
+
+@{
+    var errorMessageList = ViewBag.ErrorMessages as System.Collections.Generic.List<string>;
+    
+    if (errorMessageList.Count > 0)
+    {    
+        <div class="alert alert-danger alert-dismissable">
+            <b>@CRResources.Resources.VerificationNotPassed :</b> @ViewBag.ErrorMessage
+            <ul>
+                @foreach(string str in errorMessageList)
+                {
+                    <li>@str</li>
+                }
+            </ul>
+        </div>
+    }
+}
+
+<form action='@Url.Action("StepOne")' method="post">
+    <table class="table table-condensed table-striped">
+        <tr>
+            <td colspan="2" class="text-center">
+                <p>
+                    @CRResources.Resources.StepOne_InputInst1
+                </p>
+                <img src="~/Content/Images/BIR_Demonstration.png" class="img-responsive img-thumbnail" />
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right">@CRResources.Resources.ID_Card_Part - &#9312;</td>
+            <td class="text-center">
+                I&lt;MAC <input type="password" size="8" maxlength="8" id="BIRPart1" name="BIRPart1">&lt;<input type="password" size="1" maxlength="1" id="BIRPart1CD" name="BIRPart1CD">
+                <br />@CRResources.Resources.StepOne_InputInst2
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right">@CRResources.Resources.ID_Card_Part - &#9313;</td>
+            <td class="text-center">
+                <input type="password" size="7" maxlength="7" id="BIRPart2" name="BIRPart2">
+                <br />@CRResources.Resources.StepOne_InputInst3
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right">@CRResources.Resources.ID_Card_Part - &#9314;</td>
+            <td class="text-center">
+                <input type="password" size="7" maxlength="7" id="BIRPart3" name="BIRPart3">
+                <br />@CRResources.Resources.StepOne_InputInst4
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right">@CRResources.Resources.StepOne_InputInst5</td>
+            <td class="text-center">
+                +853- <input type="number" size="8" maxlength="8" id="Phone" name="Phone">
+                <br />@CRResources.Resources.StepOne_InputInst6
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right">@CRResources.Resources.Captcha</td>
+            <td class="text-center">@Html.Captcha(@CRResources.Resources.Captcha_Change, @CRResources.Resources.Captcha_Inst, 5)</td>
+        </tr>
+    </table>
+
+    @*<div class="table-responsive">
+        <table class="table table-condensed  table-hover">
+            <tr>
+                <td colspan="3" class="text-center">
+                    <p>
+                        請拿出你的澳門身份證並轉至背面，分別輸入三組如圖所示位置的資料：
+                    </p>
+                    <img src="~/Content/Images/BIR_Demonstration.png" class="img-responsive img-thumbnail" />
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">身份證 - &#9312;</td>
+                <td class="text-center">I&lt;MAC <input type="password" size="8" maxlength="8" id="BIRPart1" name="BIRPart1">&lt;<input type="password" size="1" maxlength="1" id="BIRPart1CD" name="BIRPart1"></td>
+                <td class="text-left">第一行開首 I&lt;MAC 之後8位數字，及其 &lt; 之後1位數字</td>
+            </tr>
+            <tr>
+                <td class="text-right">身份證 - &#9313;</td>
+                <td class="text-center"><input type="password" size="7" maxlength="7" id="BIRPart2" name="BIRPart2">
+                <td class="text-left">第一行結尾的7位數字</td>
+            </tr>
+            <tr>
+                <td class="text-right">身份證 - &#9314;</td>
+                <td class="text-center"><input type="password" size="7" maxlength="7" id="BIRPart3" name="BIRPart3">
+                <td class="text-left">第二行的首7位數字</td>
+            </tr>
+            <tr>
+                <td class="text-right">澳門流動電話號碼</td>
+                <td class="text-center">+853- <input type="number" size="6" maxlength="6" id="Phone" name="BIRPart3">
+                <td class="text-left">請提供有效的流動電話號碼，將需於下一步接收驗證碼短訊</td>
+            </tr>
+            <tr>
+                <td class="text-right">圖片驗證碼</td>
+                <td class="text-center">@Html.Captcha("換另一張", "請輸入圖片所顯示之文字", 5)
+                <td class="text-left">&nbsp;</td>
+            </tr>
+        </table>
+    </div>*@
+        <div class="row">
+            <button type="submit" class="btn btn-lg btn-warning btn-block">@CRResources.Resources.Next_Step</button>
+        </div>
+</form>
+
+<script type="text/javascript">
+    $(function () {
+        $('form').submit(function () {
+            $('button[type=submit]', this).attr('disabled', 'disabled');
+        });
+    });
+</script>
