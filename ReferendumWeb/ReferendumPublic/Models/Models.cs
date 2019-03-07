@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+///<summary>
+/// The input and view models for the MVC framework
+///</summary>
 namespace ReferendumPublic.Models
 {
     public class BallotPaperInputModel

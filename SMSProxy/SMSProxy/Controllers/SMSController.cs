@@ -12,8 +12,15 @@ using System.Text;
 
 namespace SMSProxy.Controllers
 {
+    ///<summary>
+    /// This is a proxy HTTP service for the external SMS service provider.
+    /// The origin of SMS requests has to be exposed to the carrier.  For security consideration, text messages are sent through this proxy to obfuscate the services of the online vote.
+    ///</summary>
     public class SMSController : ApiController
     {
+        ///<summary>
+        /// Format the phone nubmer and pass it onto a carrier
+        ///</summary>
         [AcceptVerbs("GET", "POST")]
         public IHttpActionResult Send(string Phone, string Message)
         {
@@ -52,6 +59,9 @@ namespace SMSProxy.Controllers
             return Ok("Error: No message was sent");
         }
 
+        ///<summary>
+        /// Send a SMS text message by firing a HTTP GET request to the carrier
+        ///</summary>
         private string sendViaTheCarrier(string Phone, string Message)
         {            
             WebClient client = new WebClient();
@@ -60,7 +70,7 @@ namespace SMSProxy.Controllers
             string password = System.Configuration.ConfigurationManager.AppSettings["Carrier_Password"];
             string from = System.Configuration.ConfigurationManager.AppSettings["Carrier_From"];
 
-            return client.DownloadString(string.Format("http://{0}/servlet/SendSMS?username={1}&password={2}&from={3}&to={4}&text={5}&dcs=8&locale=utf-8", host, username, password, from, Phone, Message));
+            return client.DownloadString(string.Format("https://{0}/servlet/SendSMS?username={1}&password={2}&from={3}&to={4}&text={5}&dcs=8&locale=utf-8", host, username, password, from, Phone, Message));
         }
 
     }

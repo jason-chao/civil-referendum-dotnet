@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+///<summary>
+/// The view models for the MVC framework
+///</summary>
 namespace ReferendumStatistics.Models
 {
     public class DummyInputModel { }
